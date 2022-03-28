@@ -17,6 +17,6 @@ public interface PostalcodeMapper {
 	List<Postalcode> getAllPostalcodes();
 	int saveBulkPostalcode(List<Postalcode>  postalcodeList);
 	boolean savePostalcode(Postalcode  postalcode);
-	List getSuburbnames(Range range);
+	List<String> getSuburbnames(Range range);
 
 }
