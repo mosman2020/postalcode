@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,10 +35,12 @@ public class PostalcodeServiceImpl implements PostalcodeService{
 	@Override
 	public List<String> getSuburbnames(Range range) {
 		List<String> result = postalcodeDao.getSuburbnames(range);
-		System.out.println("result = "+result);
-		String str = result.toString();
-		result.add(""+str.length());
-		return result;
+		result.forEach(System.out::println);
+		List<String> sortedList = result.stream().sorted().collect(Collectors.toList());
+		sortedList.forEach(System.out::println);
+		long totalCharacters = sortedList.stream().toString().chars().filter(ch -> ch != ' ').count();
+		sortedList.add(totalCharacters+"");
+		return sortedList;
 	}
 
 }

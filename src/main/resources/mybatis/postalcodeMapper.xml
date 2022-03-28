@@ -29,7 +29,7 @@
 		FROM postalcode
 		where
 		postalcode between #{from} and #{to}
-		order by suburbname
+		
 	</select>
 
 	<insert id="savePostalcode"
